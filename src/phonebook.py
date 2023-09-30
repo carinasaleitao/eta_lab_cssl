@@ -3,6 +3,13 @@ class Phonebook:
     def __init__(self):
         self.entries = {'POLICIA': '190'}
 
+    def valid_name(self,name):
+        special_chars = ['#','@','!','$','%']
+        for i in special_chars:
+            if i in name:
+                return False
+        return True
+
     def add(self, name, number):
         """
 
@@ -10,42 +17,28 @@ class Phonebook:
         :param number: number of person in string
         :return: 'Nome invalido' or 'Numero invalido' or 'Numero adicionado'
         """
-        if '#' in name:
-            return 'Nome invalido'
-        if '@' in name:
-            return 'Nme invalido'
-        if '!' in name:
-            return 'Nome invalido'
-        if '$' in name:
-            return 'Nome invalio'
-        if '%' in name:
-            return 'Nome invalido'
+        if len(number) != 9:
+            return 'Numero invalido'
 
-        if len(number) < 0:
-            return 'Numero invalid'
-
-        if name not in self.entries:
-            self.entries[name] = number
-
-        return 'Numero adicionado'
+        if self.valid_name(name):
+            if name not in self.entries:
+                self.entries[name] = number
+                return 'Numero adicionado'
+            else:
+                return 'Nome existente'
+        return 'Nome invalido'
 
     def lookup(self, name):
         """
         :param name: name of person in string
         :return: return number of person with name
         """
-        if '#' in name:
-            return 'Nome invaldo'
-        if '@' in name:
-            return 'Nome invalido'
-        if '!' in name:
-            return 'Nme invalido'
-        if '$' in name:
-            return 'Nome invalido'
-        if '%' in name:
-            return 'Nome nvalido'
-
-        return self.entries[name]
+        if self.valid_name(name):
+            if name in self.entries:
+                return self.entries[name]
+            else:
+                return 'Nome existente'
+        return 'Nome invalido'
 
     def get_names(self):
         """
@@ -77,7 +70,7 @@ class Phonebook:
         """
         result = []
         for name, number in self.entries.items():
-            if search_name not in name:
+            if search_name in name:
                 result.append({name, number})
         return result
 

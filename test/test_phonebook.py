@@ -11,7 +11,7 @@ class TestPhonebook:
         response_assert = "Numero adicionado"
 
         # Chamada
-        response = phonebook.add("Carina", '99999999')
+        response = phonebook.add("Carina", '888888888')
 
         #Avaliação
         assert response_assert == response
@@ -21,7 +21,7 @@ class TestPhonebook:
         phonebook = Phonebook()
         response_assert = "Nome invalido"
 
-        response = phonebook.add("#Carina", '99999999')
+        response = phonebook.add("#Carina", '888888888')
 
         assert response_assert == response
 
@@ -30,7 +30,7 @@ class TestPhonebook:
         phonebook = Phonebook()
         response_assert = "Nome invalido"
 
-        response = phonebook.add("@Carina", '99999999')
+        response = phonebook.add("@Carina", '888888888')
 
         assert response_assert == response
 
@@ -39,7 +39,7 @@ class TestPhonebook:
         phonebook = Phonebook()
         response_assert = "Nome invalido"
 
-        response = phonebook.add("!Carina", '99999999')
+        response = phonebook.add("!Carina", '888888888')
 
         assert response_assert == response
 
@@ -48,7 +48,7 @@ class TestPhonebook:
         phonebook = Phonebook()
         response_assert = "Nome invalido"
 
-        response = phonebook.add("$Carina", '99999999')
+        response = phonebook.add("$Carina", '888888888')
 
         assert response_assert == response
 
@@ -57,7 +57,7 @@ class TestPhonebook:
         phonebook = Phonebook()
         response_assert = "Nome invalido"
 
-        response = phonebook.add("%Carina", '99999999')
+        response = phonebook.add("%Carina", '888888888')
 
         assert response_assert == response
 
@@ -66,16 +66,16 @@ class TestPhonebook:
         phonebook = Phonebook()
         response_assert = "Numero invalido"
 
-        response = phonebook.add("Carina", '')
+        response = phonebook.add("Carina", '1')
 
         assert response_assert == response
 
     def test_add_duplicated_name(self):
 
         phonebook = Phonebook()
-        response_assert = "Nome invalido"
+        response_assert = 'Nome existente'
 
-        response = phonebook.add("POLICIA", '99999999')
+        response = phonebook.add("POLICIA", '888888888')
 
         assert response_assert == response
 
@@ -192,8 +192,8 @@ class TestPhonebook:
     def test_get_phonebook_sorted_success(self):
 
         phonebook = Phonebook()
-        phonebook.add('CARINA','888')
-        response_assert = {'POLICIA': '190', 'CARINA': '888'}
+        phonebook.add('CARINA','888888888')
+        response_assert = {'POLICIA': '190', 'CARINA': '888888888'}
 
         response = phonebook.get_phonebook_sorted()
 
@@ -204,8 +204,8 @@ class TestPhonebook:
     def test_get_phonebook_reverse_success(self):
 
         phonebook = Phonebook()
-        phonebook.add('CARINA','888')
-        response_assert = {'CARINA': '888', 'POLICIA': '190'}
+        phonebook.add('CARINA','888888888')
+        response_assert = {'CARINA': '888888888', 'POLICIA': '190'}
 
         response = phonebook.get_phonebook_reverse()
 
