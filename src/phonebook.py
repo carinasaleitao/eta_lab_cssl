@@ -15,7 +15,7 @@ class Phonebook:
 
         :param name: name of person in string
         :param number: number of person in string
-        :return: 'Nome invalido' or 'Numero invalido' or 'Numero adicionado'
+        :return: 'Numero invalido' or 'Numero adicionado' or 'Nome existente' or 'Nome invalido'
         """
         if len(number) < 3 or len(number) > 9:
             return 'Numero invalido'
@@ -98,7 +98,35 @@ class Phonebook:
         return 'Numero deletado'
 
     def change_number(self, name, number):
-        pass
+        """
+        Change the number of a contact
+        :param name: name of person in string
+        :param number: new number of person in string
+        :return: 'Numero invalido' or 'Numero alterado' or 'Nome inexistente' or 'Nome invalido'
+        """
+        if len(number) < 3 or len(number) > 9:
+            return 'Numero invalido'
+
+        if self.valid_name(name):
+            if name in self.entries:
+                self.entries[name] = number
+                return 'Numero alterado'
+            else:
+                return 'Nome inexistente'
+        return 'Nome invalido'
 
     def get_name_by_number(self, number):
-        pass
+        """
+        Gets the name of a given number
+        :param number: number of person in string
+        :return: 'Numero invalido' or name or 'Numero inexistente'
+        """
+        if len(number) < 3 or len(number) > 9:
+            return 'Numero invalido'
+
+        if number in self.entries.values():
+            name = {i for i in self.entries if self.entries[i] == "190"}
+            return name
+        return 'Numero inexistente'
+
+

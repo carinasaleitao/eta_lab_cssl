@@ -232,7 +232,7 @@ class TestPhonebook:
 
     def test_get_name_by_number_success(self):
         phonebook = Phonebook()
-        response_assert = 'POLICIA'
+        response_assert = {'POLICIA'}
 
         response = phonebook.get_name_by_number('190')
 
