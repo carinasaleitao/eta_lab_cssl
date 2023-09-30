@@ -17,7 +17,7 @@ class Phonebook:
         :param number: number of person in string
         :return: 'Nome invalido' or 'Numero invalido' or 'Numero adicionado'
         """
-        if len(number) != 9:
+        if len(number) < 3 or len(number) > 9:
             return 'Numero invalido'
 
         if self.valid_name(name):
@@ -96,3 +96,9 @@ class Phonebook:
         """
         self.entries.pop(name)
         return 'Numero deletado'
+
+    def change_number(self, name, number):
+        pass
+
+    def get_name_by_number(self, number):
+        pass
