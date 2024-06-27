@@ -56,4 +56,4 @@ To view report in HTML:
 ```bash
 python -m coverage html
 ```
-
+.
